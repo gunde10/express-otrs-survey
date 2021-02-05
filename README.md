@@ -10,7 +10,7 @@ To announce that you have completed the assignment, you must make a merge reques
 
 The web application must be a Node.js application that uses Express as the application framework and Mongoose as the ODM to create a web application that can store data persistently. You must follow the course's coding standard. You must split your source code into several modules. Of course, you need to document and comment on the source code. (#5, #1, #4)
 
-After cloning the repository with the application's source code and running `npm install`, it must be easy to lint the source code and run the application. Therefore, be sure to add the script start and lint to the "scripts" field in the package.json file. (#3)
+After cloning the repository with  the application's source code and running `npm install`, it must be easy to lint the source code and run the application. Therefore, be sure to add the script start and lint to the "scripts" field in the package.json file. (#3)
 
 The web application's data must be stored by a MongoDB database. You are free to use [MongoDB as a Docker container](https://hub.docker.com/_/mongo), or a cloud-hosted MongoDB, for instance, [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). (#7)
 
