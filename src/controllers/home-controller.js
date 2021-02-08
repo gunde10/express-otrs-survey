@@ -1,7 +1,7 @@
 /**
  * Home controller.
  *
- * @author Mats Loock
+ * @author Rickard Jarnling
  * @version 1.0.0
  */
 

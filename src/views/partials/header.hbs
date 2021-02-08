@@ -1,0 +1,55 @@
+<header>
+  <nav class="navbar">
+    {{#if header }}
+    <ul class="nav-list">
+      <li><a>CRUD Snippets</a></li>
+      <li><a href="#serv">CREATE</a></li>
+      <li><a href="/portfolio.html">READ</a></li>
+      <li><a href="/contact.html">UPDATE</a></li>
+      <li><a href="/about.html">DELETE</a></li>
+    </ul>
+    {{/if}}
+  </nav>
+</header>
+<style>
+  .navbar {
+    vertical-align: center;
+    height: 10%;
+    width: 100%;
+    background-color: #1a1919;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .nav-list {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .nav-list a,
+  .portfolio-list a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    font-family: Verdana;
+    text-transform: uppercase;
+    line-height: 60px;
+    padding: 1rem;
+    letter-spacing: 3px;
+  }
+
+  .nav-list a:hover,
+  .subheading a:hover,
+  .portfolio-list a:hover {
+    color: #cfcc1d;
+  }
+
+  .nav-list li:first-child {
+    position: absolute;
+    left: 10px;
+  }
+</style>

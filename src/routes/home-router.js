@@ -1,7 +1,7 @@
 /**
  * Home routes.
  *
- * @author Mats Loock
+ * @author Rickard Jarnling
  * @version 1.0.0
  */
 
@@ -14,4 +14,3 @@ const controller = new HomeController()
 
 router.get('/', controller.index)
 router.post('/', controller.indexPost)
-// router.get('/', (req, res) => res.send('Hej hopp! (home-router.js)'))

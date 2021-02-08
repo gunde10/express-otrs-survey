@@ -1,0 +1,21 @@
+<div class="snippets-wrapper">
+    {{#each viewData.snippets}}
+    <div class="card card-wrapper">
+        <div class="card-body upper-card-info">
+            <h5 class="card-title">Author: {{this.userName}}</h5>
+            <p class="card-text>About this snippet: {{this.description}}</p>
+<p class=" card-tag"><span class="tag-span>{{this.tag}}</span></p>
+<p class=" card-tag-created"><span class="tag-span">{{this.createdAt}}</span></p>
+            {{#if this.belongs ToUser}}
+            <div class="snippets-icons-container">
+                <a href="./snippets/{{this.id}}/edit"><span class="far fa-edit"></span></a>
+                <a href="./snippets/{{this.id}}/remove"><span class="far fa-trash-alt"></span></a>
+            </div>
+            {{/if}}
+        </div>
+        <textarea readonly class="card-body lower-card-info">
+{{this.snippet}}
+</textarea>
+    </div>
+    {{/each}}
+</div>

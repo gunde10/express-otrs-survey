@@ -17,7 +17,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-hbs": "^2.3.4",
-    "moment": "^2.29.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.8",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
