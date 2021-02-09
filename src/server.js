@@ -96,9 +96,21 @@ const main = async () => {
 
   // Error handler.
   app.use(function (err, req, res, next) {
+    if (err.status === 404) {
+      return res
+        .status(404)
+        .sendFile(join(directoryFullName, 'views', 'errors', '404.html'))
+    }
+
+    if (req.app.get('env') !== 'development') {
+      return res
+        .status(500)
+        .sendFile(join(directoryFullName, 'views', 'errors', '500.html'))
+    }
+
     res
       .status(err.status || 500)
-      .send(err.message || 'Internal Server Error')
+      .render('errors/error', { error: err })
   })
 
   // Starts the HTTP server listening for connections.
