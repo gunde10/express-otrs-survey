@@ -30,7 +30,7 @@ export class LoginController {
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
-  async login (req, res) {
+  async connect (req, res) {
     console.log('Login')
   }
 

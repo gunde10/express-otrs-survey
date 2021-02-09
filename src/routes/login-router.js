@@ -14,5 +14,5 @@ const controller = new LoginController()
 
 router.get('/', controller.index)
 
-router.post('/login', controller.login)
+router.post('/connect', controller.connect)
 router.post('/register', controller.register)
