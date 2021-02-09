@@ -12,7 +12,7 @@ import { Snippet } from '../models/snippet.js'
  */
 export class SnippetsController {
   /**
-   * Displays a list of tasks.
+   * Displays a list of snippets.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -28,14 +28,14 @@ export class SnippetsController {
             text: snippet.text
           }))
       }
-      res.render('tasks/index', { viewData })
+      res.render('snippets/index', { viewData })
     } catch (error) {
       next(error)
     }
   }
 
   /**
-   * Returns a HTML form for creating a new task.
+   * Returns a HTML form for creating a new snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -45,11 +45,11 @@ export class SnippetsController {
       title: '',
       text: ''
     }
-    res.render('tasks/new', { viewData })
+    res.render('snippets/new', { viewData })
   }
 
   /**
-   * Creates a new task.
+   * Creates a new snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -63,7 +63,7 @@ export class SnippetsController {
 
       await snippet.save()
 
-      req.session.flash = { type: 'success', message: 'The task was created successfully.' }
+      req.session.flash = { type: 'success', message: 'The snippet was created successfully.' }
       res.redirect('.')
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
@@ -72,7 +72,7 @@ export class SnippetsController {
   }
 
   /**
-   * Returns a HTML form for editing a task.
+   * Returns a HTML form for editing a snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -85,7 +85,7 @@ export class SnippetsController {
         title: snippet.title,
         text: snippet.text
       }
-      res.render('tasks/edit', { viewData })
+      res.render('snippets/edit', { viewData })
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
       res.redirect('..')
@@ -93,7 +93,7 @@ export class SnippetsController {
   }
 
   /**
-   * Updates a specific task.
+   * Updates a specific snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -106,11 +106,11 @@ export class SnippetsController {
       })
 
       if (result.nModified === 1) {
-        req.session.flash = { type: 'success', text: 'The task was updated successfully.' }
+        req.session.flash = { type: 'success', text: 'The snippet was updated successfully.' }
       } else {
         req.session.flash = {
           type: 'danger',
-          message: 'The task you attempted to update was removed by another user after you got the original values.'
+          message: 'The snippet you attempted to update was removed by another user after you got the original values.'
         }
       }
       res.redirect('..')
@@ -121,7 +121,7 @@ export class SnippetsController {
   }
 
   /**
-   * Returns a HTML form for removing a task.
+   * Returns a HTML form for removing a snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -134,7 +134,7 @@ export class SnippetsController {
         title: snippet.title,
         text: snippet.text
       }
-      res.render('tasks/remove', { viewData })
+      res.render('snippets/remove', { viewData })
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
       res.redirect('..')
@@ -142,7 +142,7 @@ export class SnippetsController {
   }
 
   /**
-   * Deletes the specified task.
+   * Deletes the specified snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -151,7 +151,7 @@ export class SnippetsController {
     try {
       await Snippet.deleteOne({ _id: req.body.id })
 
-      req.session.flash = { type: 'success', message: 'The task was deleted successfully.' }
+      req.session.flash = { type: 'success', message: 'The snippet was deleted successfully.' }
       res.redirect('..')
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
