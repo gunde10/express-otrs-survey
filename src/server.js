@@ -38,7 +38,7 @@ const main = async () => {
     helmet.contentSecurityPolicy({
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        'script-src': ["'self'", 'code.jquery.com', 'cdn.jsdelivr.net']
+        'script-src': ["'self'", 'cdn.jsdelivr.net']
       }
     })
   )
@@ -65,8 +65,15 @@ const main = async () => {
     resave: false, // Resave even if a request is not changing the session.
     saveUninitialized: false, // Don't save a created but not modified session.
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 // 1 day
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      sameSite: 'lax'
     }
+  }
+
+  if (app.get('env') === 'production') {
+    app.set('trust proxy', 1)
+    sessionOptions.cookie.secure = true
   }
 
   app.use(session(sessionOptions))
