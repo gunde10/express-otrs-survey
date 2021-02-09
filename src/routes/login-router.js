@@ -12,9 +12,7 @@ export const router = express.Router()
 
 const controller = new LoginController()
 
-// Map HTTP verbs and route paths to controller actions.
 router.get('/', controller.index)
 
 router.post('/login', controller.login)
 router.post('/register', controller.register)
-

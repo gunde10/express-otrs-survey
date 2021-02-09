@@ -1,7 +1,7 @@
 /**
  * Module for the SnippetsController.
  *
- * @author Mats Loock
+ * @author Rickard Jarnling
  * @version 1.0.0
  */
 
