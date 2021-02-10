@@ -1,12 +1,23 @@
 <header>
   <nav class="navbar">
     <ul class="nav-list">
-      <li><a href="./">CRUD APP</a></li>
-      <li><a>SNIPPETS</a></li>
+      <li>
+        <a href="#">CRUD APP</a>
+      </li>
+      <li>
+        <a href="./">HOME</a>
+      </li>
+      <li>
+        <a href="./snippets/">SNIPPETS</a>
+      </li>
       {{#if header }}
-      <li><a>NEW SNIPPET</a></li>
+      <li>
+        <a>NEW SNIPPET</a>
+      </li>
       {{/if}}
-      <li><a href="./user/">LOG IN</a></li>
+      <li>
+        <a href="./user/">LOG IN</a>
+      </li>
     </ul>
   </nav>
 </header>
@@ -52,7 +63,7 @@
   }
 
   .nav-list li:last-child {
-  position: absolute;
-  right: 10px;
+    position: absolute;
+    right: 10px;
   }
 </style>
