@@ -21,7 +21,6 @@ import { connectDB } from './config/mongoose.js'
 const main = async () => {
   await connectDB()
 
-  const PORT = process.env.PORT
   const app = express()
   const directoryFullName = dirname(fileURLToPath(import.meta.url))
 
@@ -114,8 +113,8 @@ const main = async () => {
   })
 
   // Starts the HTTP server listening for connections.
-  app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`)
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running at http://localhost:${process.env.PORT}`)
     console.log('Press Ctrl-C to terminate...')
   })
 }

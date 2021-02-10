@@ -5,10 +5,12 @@
  * @version 1.0.0
  */
 
+// import { User } from '../models/user.js'
+
 /**
  * Encapsulates a controller.
  */
-export class LoginController {
+export class UserController {
   /**
    * Displays a list of snippets.
    *
@@ -30,7 +32,7 @@ export class LoginController {
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
-  async connect (req, res) {
+  async login (req, res) {
     console.log('Login')
   }
 
@@ -42,5 +44,15 @@ export class LoginController {
    */
   async register (req, res) {
     console.log('Register')
+  }
+
+  /**
+   * Tries to sign out.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async logout (req, res) {
+    console.log('Sign out')
   }
 }
