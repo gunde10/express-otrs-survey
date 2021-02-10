@@ -1,9 +1,13 @@
-<form class="login-form">
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
-  <button class="login-button">Login</button>
-  <p>Not signed up? Register here</p>
-  <button class="register-button">Register</button>'
-  <p class="guest-p">Well.... If you really want to you can continue as a guest.</p>
-  <button class="guest-button">Continue as a guest</button>
-</form>
+<div class="container">
+  <form class="submit-form" method="post" action="./user/login">
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button class="submit-button">Login</button>
+  </form>
+  <p>Not signed up?</p><a href="./user/new">Register here.</a>
+  </form>
+  <form method="post" action="./user/guest">
+    <p class="guest-p">Well.... If you really want to you can continue as a guest.</p>
+    <button class="guest-button">Continue as a guest</button>
+  </form>
+</div>

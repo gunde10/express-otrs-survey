@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-// import { User } from '../models/user.js'
+import { User } from '../models/user.js'
 
 /**
  * Encapsulates a controller.
@@ -37,13 +37,40 @@ export class UserController {
   }
 
   /**
+   * Returns a HTML form for creating a new snippet.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async newUser (req, res) {
+    const viewData = {
+      username: '',
+      password: ''
+    }
+    res.render('login/new', { viewData })
+  }
+
+  /**
    * Tries to register.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
   async register (req, res) {
-    console.log('Register')
+    try {
+      const user = new User({
+        username: req.body.username,
+        password: req.body.password
+      })
+
+      await user.save()
+
+      req.session.flash = { type: 'success', message: 'The snippet was created successfully.' }
+      res.redirect('.')
+    } catch (error) {
+      req.session.flash = { type: 'danger', message: error.message }
+      res.redirect('./user')
+    }
   }
 
   /**
@@ -54,5 +81,15 @@ export class UserController {
    */
   async logout (req, res) {
     console.log('Sign out')
+  }
+
+  /**
+   * Guest function.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async guest (req, res) {
+    console.log('Guest')
   }
 }

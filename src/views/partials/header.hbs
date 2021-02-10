@@ -1,30 +1,28 @@
 <header>
   <nav class="navbar">
-    {{#if header }}
     <ul class="nav-list">
-      <li><a>CRUD Snippets</a></li>
-      <li><a href="#serv">CREATE</a></li>
-      <li><a href="/portfolio.html">READ</a></li>
-      <li><a href="/contact.html">UPDATE</a></li>
-      <li><a href="/about.html">DELETE</a></li>
+      <li><a href="./">CRUD APP</a></li>
+      <li><a>SNIPPETS</a></li>
+      {{#if header }}
+      <li><a>NEW SNIPPET</a></li>
+      {{/if}}
+      <li><a href="./user/">LOG IN</a></li>
     </ul>
-    {{/if}}
   </nav>
 </header>
 <style>
   .navbar {
-    vertical-align: center;
-    height: 10%;
+    height: 100px;
     width: 100%;
     background-color: #1a1919;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
   }
 
   .nav-list {
-    justify-content: center;
+    margin-left: 30%;
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -51,5 +49,10 @@
   .nav-list li:first-child {
     position: absolute;
     left: 10px;
+  }
+
+  .nav-list li:last-child {
+  position: absolute;
+  right: 10px;
   }
 </style>

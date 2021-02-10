@@ -12,14 +12,14 @@ import bcrypt from 'bcryptjs'
 const schema = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
+    required: [true, 'The email field is required.'],
     unique: true,
     trim: 1
   },
-  passphrase: {
+  password: {
     type: String,
-    minlength: [10, 'The passphrase must be of minimum length 10 characters.'],
-    required: true
+    minlength: [10, 'The password must be of minimum length 10 characters.'],
+    required: [true, 'The password field is required.']
   }
 }, {
   timestamps: true,
@@ -30,4 +30,4 @@ schema.pre('save', async function () {
   this.password = await bcrypt.hash(this.password, 8)
 })
 // Create a model using the schema.
-export const Snippet = mongoose.model('User', schema)
+export const User = mongoose.model('User', schema)
