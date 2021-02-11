@@ -12,10 +12,14 @@ export const router = express.Router()
 
 const controller = new UserController()
 
-router.get('/', controller.index)
+// Render the register form.
 router.get('/new', controller.newUser)
+router.post('/register', controller.register)
 
-router.post('/signup', controller.register)
-router.post('/signin', controller.login)
+// Render the login page.
+router.get('/', controller.index)
+router.post('/login', controller.login)
+
 router.post('/signout', controller.logout)
+
 router.post('/guest', controller.guest)

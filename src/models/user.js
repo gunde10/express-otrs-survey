@@ -12,13 +12,13 @@ import bcrypt from 'bcryptjs'
 const schema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, 'The email field is required.'],
+    required: [true, 'The username field is required.'],
     unique: true,
     trim: 1
   },
   password: {
     type: String,
-    minlength: [10, 'The password must be of minimum length 10 characters.'],
+    minlength: 8,
     required: [true, 'The password field is required.']
   }
 }, {

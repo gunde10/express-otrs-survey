@@ -33,11 +33,21 @@ export class UserController {
    * @param {object} res - Express response object.
    */
   async login (req, res) {
-    console.log('Login')
+    try {
+      const user = await User.findOne({ username: req.body.username })
+      if (user) {
+        console.log('user exists')
+      } else {
+        throw new Error('no user')
+      }
+    } catch (error) {
+      req.session.flash = { type: 'danger', message: error.message }
+      res.redirect('/user')
+    }
   }
 
   /**
-   * Returns a HTML form for creating a new snippet.
+   * Returns a HTML form for creating a new user.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -58,6 +68,10 @@ export class UserController {
    */
   async register (req, res) {
     try {
+      if (await User.findOne({ username: req.body.username })) {
+        throw new Error('Username "' + req.body.username + '" is already taken. Please choose another.')
+      }
+
       const user = new User({
         username: req.body.username,
         password: req.body.password
@@ -65,11 +79,11 @@ export class UserController {
 
       await user.save()
 
-      req.session.flash = { type: 'success', message: 'The snippet was created successfully.' }
+      req.session.flash = { type: 'success', message: 'You were succesfully registred! Please log in below.' }
       res.redirect('.')
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
-      res.redirect('./user')
+      res.redirect('/user/new')
     }
   }
 
