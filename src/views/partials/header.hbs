@@ -10,11 +10,17 @@
       <li>
         <a href="./snippets/">SNIPPETS</a>
       </li>
-      {{#if header }}
+      {{#if loggedIn }}
       <li>
         <a>NEW SNIPPET</a>
       </li>
+      <li>
+        <a href="./user/">LOG IN</a>
+      </li>
       {{/if}}
+      <li>
+        <a href="./user/logout">LOG OUT</a>
+      </li>
       <li>
         <a href="./user/">LOG IN</a>
       </li>

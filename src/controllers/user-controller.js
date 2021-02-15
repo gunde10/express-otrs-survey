@@ -1,5 +1,5 @@
 /**
- * Login Controller.
+ * User Controller.
  *
  * @author Rickard Jarnling
  * @version 1.0.0
@@ -12,7 +12,7 @@ import { User } from '../models/user.js'
  */
 export class UserController {
   /**
-   * Displays a list of snippets.
+   * Displays a login page.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -20,7 +20,7 @@ export class UserController {
    */
   async index (req, res, next) {
     try {
-      res.render('login/index')
+      res.render('user/index')
     } catch (error) {
       next(error)
     }
@@ -34,15 +34,17 @@ export class UserController {
    */
   async login (req, res) {
     try {
-      const user = await User.findOne({ username: req.body.username })
-      if (user) {
-        console.log('user exists')
-      } else {
-        throw new Error('no user')
-      }
+      const user = await User.authenticate(req.body.username, req.body.password)
+
+      req.session.regenerate(() => {
+        req.session.loggedIn = true
+        req.session.userName = user.username
+
+        res.redirect('..')
+      })
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
-      res.redirect('/user')
+      res.redirect('.')
     }
   }
 
@@ -53,11 +55,12 @@ export class UserController {
    * @param {object} res - Express response object.
    */
   async newUser (req, res) {
-    const viewData = {
-      username: '',
-      password: ''
+    try {
+      res.render('user/new')
+    } catch (error) {
+      req.session.flash = { type: 'danger', message: error.message }
+      res.redirect('.')
     }
-    res.render('login/new', { viewData })
   }
 
   /**
@@ -88,13 +91,38 @@ export class UserController {
   }
 
   /**
-   * Tries to sign out.
+   * Renders a HTML form to confirm logout.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
   async logout (req, res) {
-    console.log('Sign out')
+    console.log(req.header('Referer'))
+    try {
+      res.render('user/logout')
+    } catch (error) {
+      req.session.flash = { type: 'danger', message: error.message }
+      res.redirect('.')
+    }
+  }
+
+  /**
+   * Logs the user out of the application.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async logoutConfirmed (req, res) {
+    console.log(req.session)
+    try {
+      if (req.session) {
+        console.log(req.session)
+        res.redirect('./')
+      }
+    } catch (error) {
+      req.session.flash = { type: 'danger', message: error.message }
+      res.redirect('.')
+    }
   }
 
   /**

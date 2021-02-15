@@ -20,6 +20,8 @@ router.post('/register', controller.register)
 router.get('/', controller.index)
 router.post('/login', controller.login)
 
-router.post('/signout', controller.logout)
+// Render a logout confirmation.
+router.get('/logout', controller.logout)
+router.post('/logout/ok', controller.logoutConfirmed)
 
 router.post('/guest', controller.guest)
