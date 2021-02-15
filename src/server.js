@@ -86,6 +86,10 @@ const main = async () => {
       delete req.session.flash
     }
 
+    if (req.session.loggedIn) {
+      res.locals.loggedIn = req.session.loggedIn
+    }
+
     // Pass the base URL to the views.
     res.locals.baseURL = baseURL
 

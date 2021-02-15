@@ -12,17 +12,12 @@
       </li>
       {{#if loggedIn }}
       <li>
-        <a>NEW SNIPPET</a>
-      </li>
-      <li>
-        <a href="./user/">LOG IN</a>
-      </li>
-      {{/if}}
-      <li>
         <a href="./user/logout">LOG OUT</a>
       </li>
+      {{else}}
       <li>
         <a href="./user/">LOG IN</a>
+        {{/if}}
       </li>
     </ul>
   </nav>
@@ -70,6 +65,6 @@
 
   .nav-list li:last-child {
     position: absolute;
-    right: 10px;
+    right: 50px;
   }
 </style>

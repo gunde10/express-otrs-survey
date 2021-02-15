@@ -38,7 +38,7 @@ export class UserController {
 
       req.session.regenerate(() => {
         req.session.loggedIn = true
-        req.session.userName = user.username
+        req.session.username = user.username
 
         res.redirect('..')
       })
@@ -97,7 +97,6 @@ export class UserController {
    * @param {object} res - Express response object.
    */
   async logout (req, res) {
-    console.log(req.header('Referer'))
     try {
       res.render('user/logout')
     } catch (error) {
@@ -113,11 +112,10 @@ export class UserController {
    * @param {object} res - Express response object.
    */
   async logoutConfirmed (req, res) {
-    console.log(req.session)
     try {
       if (req.session) {
-        console.log(req.session)
-        res.redirect('./')
+        req.session.destroy()
+        res.redirect('..')
       }
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
