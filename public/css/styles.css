@@ -3,6 +3,14 @@ body, html {
     background: #f3f3f3;
 }
 
+.snippet-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+}
+
 .container {
     text-align: center;
     font-family: sans-serif;

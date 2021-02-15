@@ -86,6 +86,7 @@ const main = async () => {
       delete req.session.flash
     }
 
+    // To change the header/navbar when a user logs in or out.
     if (req.session.loggedIn) {
       res.locals.loggedIn = req.session.loggedIn
     }
