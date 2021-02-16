@@ -15,12 +15,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-hbs": "^2.3.4",
     "express-session": "^1.17.1",
-    "bcryptjs": "^2.4.3",
-    "http-errors": "1.8.0",
     "helmet": "^4.3.1",
+    "http-errors": "1.8.0",
     "mongoose": "^5.11.8",
     "morgan": "^1.10.0"
   },

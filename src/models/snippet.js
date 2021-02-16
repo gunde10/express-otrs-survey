@@ -9,6 +9,12 @@ import mongoose from 'mongoose'
 
 // Create a schema.
 const schema = new mongoose.Schema({
+  author: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 1
+  },
   title: {
     type: String,
     required: true,

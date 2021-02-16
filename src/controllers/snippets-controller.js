@@ -24,7 +24,8 @@ export class SnippetsController {
         snippets: (await Snippet.find({}))
           .map(snippet => ({
             id: snippet._id,
-            title: snippet.description,
+            author: snippet.author,
+            title: snippet.title,
             text: snippet.text
           }))
       }
@@ -41,11 +42,7 @@ export class SnippetsController {
    * @param {object} res - Express response object.
    */
   async new (req, res) {
-    const viewData = {
-      title: '',
-      text: ''
-    }
-    res.render('snippets/new', { viewData })
+    res.render('snippets/new')
   }
 
   /**
@@ -57,6 +54,7 @@ export class SnippetsController {
   async create (req, res) {
     try {
       const snippet = new Snippet({
+        author: req.session.username,
         title: req.body.title,
         text: req.body.text
       })

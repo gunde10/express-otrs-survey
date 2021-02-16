@@ -18,6 +18,7 @@ export class HomeController {
    * @param {Function} next - Express next middleware function.
    */
   index (req, res, next) {
+    console.log(req.session.cookie)
     res.render('home/index')
   }
 
@@ -31,5 +32,35 @@ export class HomeController {
    */
   indexPost (req, res, next) {
     res.render('home/index')
+  }
+
+  /**
+   * Provides a protetion layer and redirects the user to a login page if the user isn't authenticated.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
+  redirectLogin (req, res, next) {
+    if (!req.session.username) {
+      res.redirect('./user')
+    } else {
+      next()
+    }
+  }
+
+  /**
+   * Redirects the user to the home page if the user is authenticated.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
+  redirectHome (req, res, next) {
+    if (req.session.username) {
+      res.redirect('./')
+    } else {
+      next()
+    }
   }
 }
