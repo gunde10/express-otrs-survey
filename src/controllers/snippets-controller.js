@@ -6,8 +6,6 @@
  */
 
 import { Snippet } from '../models/snippet.js'
-import pkg from 'http-errors'
-const { createError } = pkg
 
 /**
  * Encapsulates a controller.
@@ -28,7 +26,20 @@ export class SnippetsController {
             id: snippet._id,
             author: snippet.author,
             title: snippet.title,
-            text: snippet.text
+            text: snippet.text,
+
+            /**
+             * Check if the logged in user owns the snippet.
+             *
+             * @returns {boolean} True or false depending if the owner owns the snippet.
+             */
+            belongsToUser: function checkOwner () {
+              if (snippet.author !== req.session.username) {
+                return false
+              } else {
+                return true
+              }
+            }
           }))
       }
       res.render('snippets/index', { viewData })
@@ -125,6 +136,7 @@ export class SnippetsController {
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
    */
   async remove (req, res, next) {
     try {
@@ -156,9 +168,18 @@ export class SnippetsController {
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
    */
-  async delete (req, res) {
-    console.log(req.body.id)
+  async delete (req, res, next) {
+    const snippet = await Snippet.findOne({ _id: req.params.id })
+
+    if (snippet.author !== req.session.username) {
+      const error = new Error()
+      error.status = 404
+      error.message = 'Not Found'
+      next(error)
+    }
+
     try {
       if (req.body.id) {
         await Snippet.deleteOne({ _id: req.body.id })

@@ -79,6 +79,7 @@ body, html {
   }
 
   .snippet-upper {
+    position: relative;
     background-color: #1a1919;
     padding-left: 10px;
     padding-top: 10px;
@@ -101,5 +102,17 @@ body, html {
   .author-text {
     margin-right: 30px;
   }
+
+  .remove-icon {
+    color: rgb(230, 230, 230);
+    position: absolute;
+    right: 15px;
+  }
+
+  .remove-icon:hover {
+    color: rgb(180, 66, 66);
+    cursor: pointer;
+  }
+
 
   
