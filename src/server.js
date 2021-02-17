@@ -102,6 +102,12 @@ const main = async () => {
 
   // Error handler.
   app.use(function (err, req, res, next) {
+    if (err.status === 403) {
+      return res
+        .status(403)
+        .sendFile(join(directoryFullName, 'views', 'errors', '403.html'))
+    }
+
     if (err.status === 404) {
       return res
         .status(404)

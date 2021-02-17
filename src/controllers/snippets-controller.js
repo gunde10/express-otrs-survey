@@ -192,13 +192,20 @@ export class SnippetsController {
   async authorize (req, res, next) {
     const snippet = await Snippet.findOne({ _id: req.params.id })
 
-    if (snippet.author !== req.session.username) {
+    if (req.session.username === undefined) {
       const error = new Error()
-      error.status = 403
+      error.status = 404
       error.message = 'Not Found'
       next(error)
     } else {
-      next()
+      if (snippet.author !== req.session.username) {
+        const error = new Error()
+        error.status = 403
+        error.message = 'Not Found'
+        next(error)
+      } else {
+        next()
+      }
     }
   }
 }
