@@ -89,6 +89,7 @@ const main = async () => {
     // To change the header/navbar when a user logs in or out.
     if (req.session.loggedIn) {
       res.locals.loggedIn = req.session.loggedIn
+      res.locals.username = req.session.username
     }
 
     // Pass the base URL to the views.

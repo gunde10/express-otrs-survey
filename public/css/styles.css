@@ -66,3 +66,40 @@ body, html {
   .guest-button {
     width: 200px;
   }
+
+  .snippet-text {
+    width: 70%;
+    height: 120px;
+  }
+
+  .snippet-lower {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .snippet-upper {
+    background-color: #1a1919;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+  }
+
+  .snippet-upper>p {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    font-family: Verdana;
+    letter-spacing: 1px;
+  }
+
+  .author-text {
+    margin-right: 30px;
+  }
+
+  

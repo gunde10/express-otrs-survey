@@ -1,6 +1,5 @@
 <div class="snippet-container">
-  <h1>
-    <span class="far fa-list-alt"></span> Snippets
+  <h1>Snippets
   </h1>
   {{#if viewData.snippets.length }}
   {{#each viewData.snippets}}
@@ -8,7 +7,8 @@
     <div class="snippet-upper">
       <p class="author-text">Author: {{this.author}}</p>
       <p class="title-text">Title: {{this.title}}</p>
-      <a class="remove-icon" title="Remove" href="./snippets/{{this.id}}/remove"><span class="far fa-trash-alt"></span></a>
+      <a class="remove-icon" title="Remove" href="./snippets/{{this.id}}/remove"><span
+          class="far fa-trash-alt"></span></a>
     </div>
     <div class="snippet-lower">
       <textarea class="snippet-text" readonly>{{this.text}}</textarea>
@@ -36,6 +36,7 @@
   }
 
   .snippet-upper {
+    position: relative;
     background-color: #1a1919;
     padding-left: 10px;
     padding-top: 10px;
@@ -56,8 +57,9 @@
   }
 
   .remove-icon {
+    position: absolute;
+    right: 20px;
     color: rgb(230, 230, 230);
-    margin-left: 65%;
   }
 
   .remove-icon:hover {

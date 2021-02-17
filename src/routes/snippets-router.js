@@ -23,5 +23,5 @@ router.post('/create', controller.create)
 router.get('/:id/edit', controller.edit)
 router.post('/:id/update', controller.update)
 
-router.get('/:id/remove', controller.remove)
-router.post('/:id/delete', controller.delete)
+router.get('/:id/remove', homeController.redirectLogin, controller.remove)
+router.post('/:id/delete', homeController.redirectLogin, controller.delete)

@@ -6,6 +6,8 @@
  */
 
 import { Snippet } from '../models/snippet.js'
+import pkg from 'http-errors'
+const { createError } = pkg
 
 /**
  * Encapsulates a controller.
@@ -124,16 +126,24 @@ export class SnippetsController {
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
-  async remove (req, res) {
+  async remove (req, res, next) {
     try {
       const snippet = await Snippet.findOne({ _id: req.params.id })
-      console.log(snippet)
+
+      if (snippet.author !== req.session.username) {
+        const error = new Error()
+        error.status = 404
+        error.message = 'Not Found'
+        next(error)
+      }
+
       const viewData = {
         id: snippet._id,
         author: snippet.author,
         title: snippet.title,
         text: snippet.text
       }
+
       res.render('snippets/remove', { viewData })
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
@@ -148,8 +158,13 @@ export class SnippetsController {
    * @param {object} res - Express response object.
    */
   async delete (req, res) {
+    console.log(req.body.id)
     try {
-      await Snippet.deleteOne({ _id: req.body.id })
+      if (req.body.id) {
+        await Snippet.deleteOne({ _id: req.body.id })
+      } else {
+        throw new Error('No snippet to delete.')
+      }
 
       req.session.flash = { type: 'success', message: 'The snippet was deleted successfully.' }
       res.redirect('..')

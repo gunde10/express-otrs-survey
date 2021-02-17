@@ -12,14 +12,15 @@ import bcrypt from 'bcryptjs'
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, 'The username field is required.'],
+    required: true,
     unique: true,
+    minlength: 1,
     trim: 1
   },
   password: {
     type: String,
     minlength: 8,
-    required: [true, 'The password field is required.']
+    required: true
   }
 }, {
   timestamps: true,
