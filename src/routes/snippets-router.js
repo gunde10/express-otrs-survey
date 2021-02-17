@@ -18,10 +18,10 @@ const homeController = new HomeController()
 router.get('/', controller.index)
 
 router.get('/new', homeController.redirectLogin, controller.new)
-router.post('/create', controller.create)
+router.post('/create', homeController.redirectLogin, controller.create)
 
-router.get('/:id/edit', controller.edit)
-router.post('/:id/update', controller.update)
+router.get('/:id/edit', homeController.redirectLogin, controller.authorize, controller.edit)
+router.post('/:id/update', homeController.redirectLogin, controller.authorize, controller.update)
 
-router.get('/:id/remove', homeController.redirectLogin, controller.remove)
-router.post('/:id/delete', homeController.redirectLogin, controller.delete)
+router.get('/:id/remove', homeController.redirectLogin, controller.authorize, controller.remove)
+router.post('/:id/delete', homeController.redirectLogin, controller.authorize, controller.delete)

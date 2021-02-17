@@ -8,6 +8,7 @@
       <p class="author-text">Author: {{this.author}}</p>
       <p class="title-text">Title: {{this.title}}</p>
       {{#if this.belongsToUser }}
+      <a class="edit-icon" title="Edit" href="./snippets/{{this.id}}/edit"><span class="far fa-edit"></span></a>
       <a class="remove-icon" title="Remove" href="./snippets/{{this.id}}/remove"><span
           class="far fa-trash-alt"></span></a>
       {{/if}}

@@ -109,7 +109,13 @@ body, html {
     right: 15px;
   }
 
-  .remove-icon:hover {
+  .edit-icon {
+    color: rgb(230, 230, 230);
+    position: absolute;
+    right: 50px;
+  }
+
+  .remove-icon:hover, .edit-icon:hover {
     color: rgb(180, 66, 66);
     cursor: pointer;
   }
