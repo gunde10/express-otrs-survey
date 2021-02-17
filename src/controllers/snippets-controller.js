@@ -127,8 +127,10 @@ export class SnippetsController {
   async remove (req, res) {
     try {
       const snippet = await Snippet.findOne({ _id: req.params.id })
+      console.log(snippet)
       const viewData = {
         id: snippet._id,
+        author: snippet.author,
         title: snippet.title,
         text: snippet.text
       }

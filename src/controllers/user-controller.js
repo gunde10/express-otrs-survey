@@ -40,7 +40,7 @@ export class UserController {
         req.session.loggedIn = true
         req.session.username = user.username
 
-        res.redirect('..')
+        res.redirect('/')
       })
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
@@ -114,7 +114,10 @@ export class UserController {
   async logoutConfirmed (req, res) {
     try {
       if (req.session) {
+        console.log(req.session)
         req.session.destroy()
+        res.clearCookie(process.env.SESSION_NAME)
+        console.log(req.session)
         res.redirect('..')
       }
     } catch (error) {

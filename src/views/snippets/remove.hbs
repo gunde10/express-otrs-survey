@@ -1,0 +1,64 @@
+<div class="snippet-container">
+  <h1>
+    Remove Snippet
+  </h1>
+  <div class="snippet-wrapper">
+    <div class="snippet-upper">
+      <p class="author-text">Author: {{viewData.author}}</p>
+      <p class="title-text">Title: {{viewData.title}}</p>
+      <a class="remove-icon" title="Remove" href="./snippets/{{this.id}}/remove"><span class="far fa-trash-alt"></span></a>
+    </div>
+    <div class="snippet-lower">
+      <textarea class="snippet-text" readonly>{{viewData.text}}</textarea>
+    </div>
+    <form method="post" action="./snippets/{{viewData.id}}/delete">
+      <input type="hidden" name="id" value="{{viewData.id}}" />
+      <button type="submit" class="btn btn-lg btn-primary" autofocus="autofocus">Delete Snippet</button>
+    </form>
+  </div>
+  <style>
+    .snippet-text {
+      width: 70%;
+      height: 120px;
+    }
+
+    .snippet-lower {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .snippet-upper {
+      background-color: #1a1919;
+      padding-left: 10px;
+      padding-top: 10px;
+      width: 70%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid black;
+    }
+
+    .snippet-upper>p {
+      text-decoration: none;
+      color: rgb(230, 230, 230);
+      font-family: Verdana;
+      letter-spacing: 1px;
+    }
+
+    .remove-icon {
+      color: rgb(230, 230, 230);
+      margin-left: 65%;
+    }
+
+    .remove-icon:hover {
+      color: rgb(192, 51, 51);
+      cursor: pointer;
+    }
+
+    .author-text {
+      margin-right: 30px;
+    }
+  </style>

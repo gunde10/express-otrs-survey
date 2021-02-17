@@ -8,7 +8,7 @@
     <div class="snippet-upper">
       <p class="author-text">Author: {{this.author}}</p>
       <p class="title-text">Title: {{this.title}}</p>
-      <p class="created-text">{{this.createdAt}}</p>
+      <a class="remove-icon" title="Remove" href="./snippets/{{this.id}}/remove"><span class="far fa-trash-alt"></span></a>
     </div>
     <div class="snippet-lower">
       <textarea class="snippet-text" readonly>{{this.text}}</textarea>
@@ -53,6 +53,16 @@
     color: rgb(230, 230, 230);
     font-family: Verdana;
     letter-spacing: 1px;
+  }
+
+  .remove-icon {
+    color: rgb(230, 230, 230);
+    margin-left: 65%;
+  }
+
+  .remove-icon:hover {
+    color: rgb(192, 51, 51);
+    cursor: pointer;
   }
 
   .author-text {

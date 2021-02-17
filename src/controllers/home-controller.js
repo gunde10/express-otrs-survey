@@ -18,7 +18,6 @@ export class HomeController {
    * @param {Function} next - Express next middleware function.
    */
   index (req, res, next) {
-    console.log(req.session.cookie)
     res.render('home/index')
   }
 
@@ -43,7 +42,7 @@ export class HomeController {
    */
   redirectLogin (req, res, next) {
     if (!req.session.username) {
-      res.redirect('./user')
+      res.redirect('/user')
     } else {
       next()
     }
@@ -58,7 +57,7 @@ export class HomeController {
    */
   redirectHome (req, res, next) {
     if (req.session.username) {
-      res.redirect('./')
+      res.redirect('/')
     } else {
       next()
     }
