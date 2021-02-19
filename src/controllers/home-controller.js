@@ -18,7 +18,7 @@ export class HomeController {
    * @param {Function} next - Express next middleware function.
    */
   index (req, res, next) {
-    res.redirect('./snippets')
+    res.render('home/index')
   }
 
   /**

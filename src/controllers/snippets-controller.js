@@ -102,7 +102,7 @@ export class SnippetsController {
       res.render('snippets/edit', { viewData })
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
-      res.redirect('..')
+      res.redirect('./snippets')
     }
   }
 
@@ -126,7 +126,7 @@ export class SnippetsController {
           message: 'The snippet you attempted to update was removed by another user after you got the original values.'
         }
       }
-      res.redirect('..')
+      res.redirect('../')
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
       res.redirect('./edit')
@@ -154,7 +154,7 @@ export class SnippetsController {
       res.render('snippets/remove', { viewData })
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
-      res.redirect('..')
+      res.redirect('./snippets')
     }
   }
 
@@ -174,7 +174,7 @@ export class SnippetsController {
       }
 
       req.session.flash = { type: 'success', message: 'The snippet was deleted successfully.' }
-      res.redirect('..')
+      res.redirect('../')
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
       res.redirect('./remove')

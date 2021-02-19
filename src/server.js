@@ -105,7 +105,6 @@ const main = async () => {
     if (err.status === 401) {
       return res
         .status(401)
-        .render('user/index')
     }
 
     if (err.status === 403) {

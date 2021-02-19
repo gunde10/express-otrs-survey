@@ -46,6 +46,8 @@ export class UserController {
     } catch (error) {
       error.status = 401
       next(error)
+      req.session.flash = { type: 'danger', message: error.message }
+      res.redirect('./')
     }
   }
 
@@ -84,10 +86,10 @@ export class UserController {
       await user.save()
 
       req.session.flash = { type: 'success', message: 'You were succesfully registred! Please log in below.' }
-      res.redirect('.')
+      res.redirect('./')
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
-      res.redirect('./user/new')
+      res.redirect('../user/register')
     }
   }
 
@@ -115,11 +117,9 @@ export class UserController {
   async logoutConfirmed (req, res) {
     try {
       if (req.session) {
-        console.log(req.session)
         req.session.destroy()
         res.clearCookie(process.env.SESSION_NAME)
-        console.log(req.session)
-        res.redirect('..')
+        res.redirect('./')
       }
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }

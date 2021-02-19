@@ -13,13 +13,13 @@ export const router = express.Router()
 const controller = new UserController()
 
 // Render the register form.
-router.get('/new', controller.redirectHome, controller.newUser)
+router.get('/register', controller.redirectHome, controller.newUser)
 router.post('/register', controller.redirectHome, controller.register)
 
 // Render the login page.
 router.get('/', controller.redirectHome, controller.index)
-router.post('/login', controller.redirectHome, controller.login)
+router.post('/', controller.redirectHome, controller.login)
 
 // Render a logout confirmation.
 router.get('/logout', controller.redirectLogin, controller.logout)
-router.post('/logout/ok', controller.redirectLogin, controller.logoutConfirmed)
+router.post('/logout', controller.redirectLogin, controller.logoutConfirmed)
