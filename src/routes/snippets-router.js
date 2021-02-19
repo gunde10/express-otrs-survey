@@ -7,18 +7,18 @@
 
 import express from 'express'
 import { SnippetsController } from '../controllers/snippets-controller.js'
-import { HomeController } from '../controllers/home-controller.js'
+import { UserController } from '../controllers/user-controller.js'
 
 export const router = express.Router()
 
 const controller = new SnippetsController()
-const homeController = new HomeController()
+const userControler = new UserController()
 
 // Map HTTP verbs and route paths to controller actions.
 router.get('/', controller.index)
 
-router.get('/new', homeController.redirectLogin, controller.new)
-router.post('/create', homeController.redirectLogin, controller.create)
+router.get('/new', userControler.redirectLogin, controller.new)
+router.post('/create', userControler.redirectLogin, controller.create)
 
 router.get('/:id/edit', controller.authorize, controller.edit)
 router.post('/:id/update', controller.authorize, controller.update)

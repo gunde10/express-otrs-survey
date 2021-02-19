@@ -102,6 +102,12 @@ const main = async () => {
 
   // Error handler.
   app.use(function (err, req, res, next) {
+    if (err.status === 401) {
+      return res
+        .status(401)
+        .render('user/index')
+    }
+
     if (err.status === 403) {
       return res
         .status(403)

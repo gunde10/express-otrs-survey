@@ -7,10 +7,12 @@
 
 import express from 'express'
 import { HomeController } from '../controllers/home-controller.js'
+import { UserController } from '../controllers/user-controller.js'
 
 export const router = express.Router()
 
 const controller = new HomeController()
+const userController = new UserController()
 
-router.get('/', controller.index)
+router.get('/', userController.redirectLogin, controller.index)
 router.post('/', controller.indexPost)

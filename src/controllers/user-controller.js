@@ -31,8 +31,9 @@ export class UserController {
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
    */
-  async login (req, res) {
+  async login (req, res, next) {
     try {
       const user = await User.authenticate(req.body.username, req.body.password)
 
@@ -43,8 +44,8 @@ export class UserController {
         res.redirect('/')
       })
     } catch (error) {
-      req.session.flash = { type: 'danger', message: error.message }
-      res.redirect('.')
+      error.status = 401
+      next(error)
     }
   }
 
@@ -127,12 +128,32 @@ export class UserController {
   }
 
   /**
-   * Guest function.
+   * Provides a protetion layer and redirects the user to a login page if the user isn't authenticated.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
    */
-  async guest (req, res) {
-    console.log('Guest')
+  redirectLogin (req, res, next) {
+    if (!req.session.username) {
+      res.redirect('/user')
+    } else {
+      next()
+    }
+  }
+
+  /**
+   * Redirects the user to the home page if the user is authenticated.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
+  redirectHome (req, res, next) {
+    if (req.session.username) {
+      res.redirect('/')
+    } else {
+      next()
+    }
   }
 }
