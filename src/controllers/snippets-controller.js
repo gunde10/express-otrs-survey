@@ -119,7 +119,6 @@ export class SnippetsController {
       })
 
       if (result.nModified === 1) {
-        console.log('hit')
         req.session.flash = { type: 'success', message: 'The snippet was updated successfully.' }
       } else {
         req.session.flash = {

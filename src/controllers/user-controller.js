@@ -41,7 +41,7 @@ export class UserController {
         req.session.loggedIn = true
         req.session.username = user.username
 
-        res.redirect('/')
+        res.redirect('./')
       })
     } catch (error) {
       error.status = 401
@@ -87,7 +87,7 @@ export class UserController {
       res.redirect('.')
     } catch (error) {
       req.session.flash = { type: 'danger', message: error.message }
-      res.redirect('/user/new')
+      res.redirect('./user/new')
     }
   }
 
@@ -136,7 +136,7 @@ export class UserController {
    */
   redirectLogin (req, res, next) {
     if (!req.session.username) {
-      res.redirect('/user')
+      res.redirect('./user')
     } else {
       next()
     }
@@ -151,7 +151,7 @@ export class UserController {
    */
   redirectHome (req, res, next) {
     if (req.session.username) {
-      res.redirect('/')
+      res.redirect('./')
     } else {
       next()
     }
