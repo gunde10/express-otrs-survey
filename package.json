@@ -1,7 +1,7 @@
 {
-  "name": "assignment-b1-crud-snippets",
+  "name": "OTRS-Survey",
   "version": "1.0.0",
-  "description": "In this assignment, you will create a web application to manage code snippets. The web application will use the Node.js platform, Express as the application framework, and Mongoose as the object data modeling (ODM) library for MongoDB.",
+  "description": "",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
@@ -10,18 +10,16 @@
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
   },
-  "repository": "gitlab:git@gitlab.lnu.se:1dv026/student/rj222nr/assignment-b1-crud-snippets.git",
-  "author": "Rickard Jarnling <rj222nr@student.lnu.se>",
+  "repository": "git@github.com:gunde10/otrs-survey.git",
+  "author": "Rickard Jarnling <rickard.jarnling@gmail.com>",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
-    "express-hbs": "^2.3.4",
     "express-session": "^1.17.1",
     "helmet": "^4.3.1",
     "http-errors": "1.8.0",
-    "mongoose": "^5.11.8",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
@@ -33,11 +31,5 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "nodemon": "^2.0.6"
-  },
-  "eslintConfig": {
-    "extends": "@lnu"
-  },
-  "nodemonConfig": {
-    "ext": "js,json,hbs,html,css"
   }
 }

@@ -1,0 +1,24 @@
+HD 
+________________________________________________________________________________
+TicketID
+EMAIL
+Timestamp (ticket created)
+Timestamp (mail sent)
+Kod
+Status (förbrukad eller inte, 0 ska skicka till, 1 skickad till, 2a öppnad, 3a submitad)
+_____________________________________________________________
+Output till HD från Survey:
+Betyg (0-100)
+Kommentar
+Timestamp
+IP
++ kod för att koppla ihop i HD
+
+SURVEY på (https://on1call.se/survey/kod):
+Valideringssteg: Kolla om kod is != 3 (submitad)
+
+
+
+
+
+Hur skicka mail så det ser snyggt ut, är det HTML som gäller?
