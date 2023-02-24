@@ -21,7 +21,7 @@ const main = async () => {
   const app = express()
 
   app.use(cors({
-    origin: ['http://localhost:5173', 'http://192.168.1.63:5173'],
+    origin: process.env.FRONTEND_URL,
     methods: 'GET,POST',
     credentials: true,
     allowedHeaders: 'Content-Type, Authorization, X-Requested-With, Access'  
