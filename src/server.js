@@ -21,7 +21,7 @@ const main = async () => {
   const app = express()
 
   app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: '*',
     methods: 'GET,POST',
     credentials: true,
     allowedHeaders: 'Content-Type, Authorization, X-Requested-With, Access'  
